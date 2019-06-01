@@ -101,7 +101,7 @@ def GoMining(df):
                 continue
 
             formula = 'totalwgt_lb ~ agepreg + ' + name
-            formula = formula.encode('ascii')
+            #formula = formula.encode('ascii')
 
             model = smf.ols(formula, data=df)
             if model.nobs < len(df)/2:
@@ -130,10 +130,11 @@ def MiningReport(variables, n=30):
     for mse, name in variables[:n]:
         key = re.sub('_r$', '', name)
         try:
-            desc = all_vars.loc[key].desc
-            if isinstance(desc, pandas.Series):
-                desc = desc[0]
-            print(name, mse, desc)
+            desc_ = all_vars.loc[key].desc
+            if isinstance(desc_, pd.Series):
+                desc_ = desc_.values[0]
+                
+            print(name, r2, desc_)
         except KeyError:
             print(name, mse)
 

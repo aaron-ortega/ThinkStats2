@@ -155,7 +155,7 @@ def ClassSizes():
                    ylabel='PMF',
                    axis=[0, 52, 0, 0.27])
     
- 
+
 def main(script):
     live, firsts, others = first.MakeFrames()
     MakeFigures(firsts, others)
